@@ -91,7 +91,7 @@
             height: 50vh;
             /* vh is the unit that divdes the viewport in units of 1/100 */
             /* height is 50 vh = half the height of the viewport */
-            background: #969696;
+            /* background: #969696; */
             margin: 0;
             top: 25vh;
             /* this is how high it should be from top */
@@ -106,14 +106,14 @@
             transform: translateY(-50%);
             width: 90%;
             height: 4rem;
-            background-color: #fff;
+            /* background-color: #fff; */
         }
 
         #scrolly-overlay .scrolly figure.sticky .bar-inner {
             width: 10%;
             height: 100%;
             transition: width 1s ease-in-out;
-            background-color: #daa520;
+            /* background-color: #daa520; */
         }
 
         .spacer {
@@ -170,14 +170,14 @@
             background-color: white;
             padding: 10px;
         }
-
+/* 
         .annotation {
             font-size: 15px;
             font-family: Arial, Helvetica, sans-serif;
             font-style: italic;
             font-weight: 200;
 
-        }
+        } */
 
         /* .change-btn {
             margin: 10px 0 0 30px;
@@ -205,9 +205,7 @@
     <section class='filler'>
 
         <p>
-            At the Times we have our very complicated scrollytelling rig. This is a much cleaner, slimmed-down version <a
-                href="https://pudding.cool/process/scrollytelling-sticky/">by Elaina Natario and Russell Goldenberg at
-                the Pudding</a>.
+            Test Scores for 3th Grade in 2000 Large Districts</a>.
         </p>
         <h2>Start Scrolling!</h2>
 
@@ -221,7 +219,7 @@
             <figure class='sticky'>
                 <!-- put your chart stuff here -->
 
-
+                <svg width= "1050px" heigth = "600px"></svg> 
                 
                 <div class='bar-outer'>
                     <div class='bar-inner'></div>
@@ -233,11 +231,11 @@
             <article>
             
                 <div class='step' data-width='100%' sel_var_state='mnav3poolgcs'>
-                    <p>mnav3poolgcs</p>
+                    <p>Test Scores for 3th Grade in 2000 Large Districts</p>
                 </div>
-                <div class='step' data-width='100%' sel_var_state='mnav8poolgcs'>
 
-                    <p>mnav8poolgcs</p>
+                <div class='step' data-width='100%' sel_var_state='mnav8poolgcs'>
+                    <p>Test Scores for 8th Grade in 2000 Large Districts</p>
                 </div>
                 </div>
             </article>
@@ -247,7 +245,7 @@
     </section>
 
     <section class='filler'>
-        <h2>End. Keep scrolling!</h2>
+        <!-- <h2>End. Keep scrolling!</h2> -->
  
         <div class="spacer"></div>
         <p>See? The article continued as normal.</p>
@@ -382,13 +380,13 @@
             if (sel_var_state == "mnav3poolgcs") {
                 sel_var_state = "mnav8poolgcs"
                 // button.html("Switch to 3rd grade")
-                hed.html("Test Scores for 8th Grade in 2000 Large Districts")
-                hed.html("Test Scores for <span class='highlight'>8th Grade</span> in 2000 Large Districts")
+                // hed.html("Test Scores for 8th Grade in 2000 Large Districts")
+                // hed.html("Test Scores for <span class='highlight'>8th Grade</span> in 2000 Large Districts")
 
             } else {
                 sel_var_state = "mnav3poolgcs"
                 // button.html("Switch 8th grade")
-                hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
+                // hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
             }
 
             var t = d3.transition() //https://github.com/d3/d3-transition
@@ -478,7 +476,7 @@
             },
             exit: el => { //what's supposed to happen when the slide exits?
                 let index = +d3.select(el).attr('data-index');
-                let sel_var_state = +d3.select(el).attr('mnav3poolgcs');
+                let sel_var_state = +d3.select(el).attr('mnav8poolgcs');
                 if (index == 0) {
                         sel_var_state = "mnav3poolgcs"
                         // button.html("Switch to 3rd grade")
