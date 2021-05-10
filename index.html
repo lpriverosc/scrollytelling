@@ -232,12 +232,12 @@
             <!--  step text   -->
             <article>
             
-                <div class='step' data-width='10%' sel_var_state='mnav3poolgcs'>
-                    <p>2020</p>
+                <div class='step' data-width='100%' sel_var_state='mnav3poolgcs'>
+                    <p>mnav3poolgcs</p>
                 </div>
-                <div class='step' data-width='90%' sel_var_state='mnav8poolgcs'>
+                <div class='step' data-width='100%' sel_var_state='mnav8poolgcs'>
 
-                    <p>2009</p>
+                    <p>mnav8poolgcs</p>
                 </div>
                 </div>
             </article>
@@ -280,9 +280,10 @@
     let svg = d3.select("body").select("svg");
 
     // let sel_var_state = "mnav3poolgcs";
+    // let sel_var_state = "mnav8poolgcs";
 
 
-    d3.csv("data.csv").then(function (data) {
+    d3.csv("largest_districts.csv").then(function (data) {
         console.log("loaded")
 
         data.forEach(function (row) {
