@@ -125,11 +125,6 @@
             overflow: visible;
         }
 
-
-        h1 {
-            margin-left: 30px;
-        }
-
         .x .tick line {
             stroke: rgba(0, 0, 0, .2);
         }
@@ -195,6 +190,14 @@
             color: orange;
             text-decoration: underline;
         }
+        /* #graphic {
+        max-width:  1440px;
+        width: 100%;
+        position:   relative; 
+        height:  100%;
+        position:  relative; 
+        margin:auto;
+        } */
     </style>
 </head>
 
@@ -220,17 +223,20 @@
 
 
                 
-                <div class='svg'>
-                    <div class='svg'></div>
+                <div class='bar-outer'>
+                    <div class='bar-inner'></div>
+                        <svg width= "1050px" heigth = "600px"></svg> 
                 </div>
             </figure>
 
             <!--  step text   -->
             <article>
-                <div class='step' data-width='10%' data-index='0'>
+            
+                <div class='step' data-width='10%' sel_var_state='mnav3poolgcs'>
                     <p>2020</p>
                 </div>
-                <div class='step' data-width='90%' data-index='1'>
+                <div class='step' data-width='90%' sel_var_state='mnav8poolgcs'>
+
                     <p>2009</p>
                 </div>
                 </div>
@@ -257,8 +263,8 @@
 </body>
 
 <!-- add your script blocks at the end -->
-<script src="https://d3js.org/d3.v6.min.js"></script>
-<script src="https://unpkg.com/enter-view@1.0.0/enter-view.min.js"></script>
+ <script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://unpkg.com/enter-view@1.0.0/enter-view.min.js"></script> -->
 <!-- https://github.com/russellgoldenberg/enter-view -->
 
 
@@ -273,7 +279,7 @@
 
     let svg = d3.select("body").select("svg");
 
-    let sel_var_state = "mnav3poolgcs";
+    // let sel_var_state = "mnav3poolgcs";
 
 
     d3.csv("largest_districts.csv").then(function (data) {
@@ -374,13 +380,13 @@
 
             if (sel_var_state == "mnav3poolgcs") {
                 sel_var_state = "mnav8poolgcs"
-                button.html("Switch to 3rd grade")
+                // button.html("Switch to 3rd grade")
                 hed.html("Test Scores for 8th Grade in 2000 Large Districts")
                 hed.html("Test Scores for <span class='highlight'>8th Grade</span> in 2000 Large Districts")
 
             } else {
                 sel_var_state = "mnav3poolgcs"
-                button.html("Switch 8th grade")
+                // button.html("Switch 8th grade")
                 hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
             }
 
@@ -444,10 +450,6 @@
 
 
     }) //end function
- 
-
-
-
     }
 
     function init() {
@@ -457,24 +459,33 @@
             offset: 0.5, //when the slide is 50% away then trigger your chart
             enter: el => { //what's supposed to happen when the slide enters?
                 const index = +d3.select(el).attr('data-index'); //extract the data-index attribute. this can be anything: a filter, a date, whatever.
+                let sel_var_state = +d3.select(el).attr('mnav3poolgcs');
                 function update() {
 
-                    if (sel_var_state == "mnav3poolgcs") {
-                        sel_var_state = "mnav8poolgcs"
-                        button.html("Switch to 3rd grade")
-                        hed.html("Test Scores for 8th Grade in 2000 Large Districts")
-                        hed.html("Test Scores for <span class='highlight'>8th Grade</span> in 2000 Large Districts")
+                    if (index == 0) {
+                        sel_var_state = "mnav3poolgcs"
+                        // button.html("Switch to 3rd grade")
+
 
                     } else {
-                        sel_var_state = "mnav3poolgcs"
-                        button.html("Switch 8th grade")
-                        hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
+                        sel_var_state = "mnav8poolgcs"
+                        // button.html("Switch 8th grade")
+                        // hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
                     }}
 
                 updateChart(sel_var_state);
             },
             exit: el => { //what's supposed to happen when the slide exits?
                 let index = +d3.select(el).attr('data-index');
+                let sel_var_state = +d3.select(el).attr('mnav3poolgcs');
+                if (index == 0) {
+                        sel_var_state = "mnav3poolgcs"
+                        // button.html("Switch to 3rd grade")
+
+
+                    } else {
+                        sel_var_state = "mnav8poolgcs"
+                    }
                 index = Math.max(0, index - 1);
                 updateChart(sel_var_state);
             }
