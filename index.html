@@ -13,7 +13,7 @@
         }
 
         svg {
-            border: 2px solid purple;
+            /* border: 2px solid purple; */
             overflow: visible;
         }
 
@@ -29,7 +29,7 @@
 
         .filler h2 {
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 54px;
+            font-size: 44px;
         }
 
 
@@ -79,7 +79,7 @@
             padding: 1rem;
             text-align: center;
             font-weight: 400;
-            background-color: #5b5b5b;
+            background-color: #699cd6;
             transition: background-color 250ms ease-in-out;
             color: #f4f4f4;
         }
@@ -121,7 +121,7 @@
         }
 
         svg {
-            /* border: 2px solid purple; */
+
             overflow: visible;
         }
 
@@ -205,9 +205,10 @@
     <section class='filler'>
 
         <p>
-            Test Scores for 3th Grade in 2000 Large Districts</a>.
+            </a>.
         </p>
-        <h2>Start Scrolling!</h2>
+        <h2>How Effective Is Your School District? A New
+            Measure Shows Where Students Learn the Most!</h2>
 
     </section>
 
@@ -219,7 +220,7 @@
             <figure class='sticky'>
                 <!-- put your chart stuff here -->
 
-                <svg width= "1050px" heigth = "600px"></svg> 
+                <svg ></svg> 
                 
                 <div class='bar-outer'>
                     <div class='bar-inner'></div>
@@ -355,7 +356,7 @@
             .style("stroke-width", "1")
             .style("opacity", 1)
 
-        let popup = d3.select(".pop-up");
+        // let popup = d3.select(".pop-up");
 
         let points = svg.append("g")
             .selectAll(".points")
@@ -380,24 +381,24 @@
             if (sel_var_state == "mnav3poolgcs") {
                 sel_var_state = "mnav8poolgcs"
                 // button.html("Switch to 3rd grade")
-                // hed.html("Test Scores for 8th Grade in 2000 Large Districts")
+                hed.html("Test Scores for 8th Grade in 2000 Large Districts")
                 // hed.html("Test Scores for <span class='highlight'>8th Grade</span> in 2000 Large Districts")
 
             } else {
                 sel_var_state = "mnav3poolgcs"
                 // button.html("Switch 8th grade")
-                // hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
+                hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
             }
 
-            var t = d3.transition() //https://github.com/d3/d3-transition
-                .duration(500)
-                // .ease(d3.easeLinear); // play with differeint easing functions https://github.com/d3/d3-ease
+            // var t = d3.transition() //https://github.com/d3/d3-transition
+            //     .duration(500)
+            //     // .ease(d3.easeLinear); // play with differeint easing functions https://github.com/d3/d3-ease
                 
-            points
-                .transition(t)
-                .attr("cx", function (d) { return x(d.ses) }) //callback to access the data, position according to x axis
-                .attr("cy", function (d) { return y(d[sel_var_state]) })
-                .attr("r", function (d) { return r(d.totavg) })
+            // points
+            //     .transition(t)
+            //     .attr("cx", function (d) { return x(d.ses) }) //callback to access the data, position according to x axis
+            //     .attr("cy", function (d) { return y(d[sel_var_state]) })
+            //     .attr("r", function (d) { return r(d.totavg) })
 
         }
 
@@ -459,9 +460,9 @@
             enter: el => { //what's supposed to happen when the slide enters?
                 const index = +d3.select(el).attr('data-index'); //extract the data-index attribute. this can be anything: a filter, a date, whatever.
                 let sel_var_state = +d3.select(el).attr('mnav3poolgcs');
-                function update() {
 
-                    if (index == 0) {
+
+                    if (sel_var_state == 'mnav3poolgcs') {
                         sel_var_state = "mnav3poolgcs"
                         // button.html("Switch to 3rd grade")
 
@@ -470,14 +471,14 @@
                         sel_var_state = "mnav8poolgcs"
                         // button.html("Switch 8th grade")
                         // hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
-                    }}
+                    }
 
                 updateChart(sel_var_state);
             },
             exit: el => { //what's supposed to happen when the slide exits?
                 let index = +d3.select(el).attr('data-index');
                 let sel_var_state = +d3.select(el).attr('mnav8poolgcs');
-                if (index == 0) {
+                if (sel_var_state == 'mnav3poolgcs') {
                         sel_var_state = "mnav3poolgcs"
                         // button.html("Switch to 3rd grade")
 
