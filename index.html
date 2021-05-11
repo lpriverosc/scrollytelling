@@ -160,7 +160,7 @@
 
         }
 
-        .pop-up {
+        /* .pop-up {
             position: absolute;
             border: 1px solid black;
             border-radius: 1px;
@@ -169,7 +169,7 @@
             pointer-events: none;
             background-color: white;
             padding: 10px;
-        }
+        } */
 /* 
         .annotation {
             font-size: 15px;
@@ -273,7 +273,7 @@
 
     function updateChart(sel_var_state) {
 
-        let width = 800;
+    let width = 800;
     let height = 500;
 
     let svg = d3.select("body").select("svg");
@@ -381,13 +381,13 @@
             if (sel_var_state == "mnav3poolgcs") {
                 sel_var_state = "mnav8poolgcs"
                 // button.html("Switch to 3rd grade")
-                hed.html("Test Scores for 8th Grade in 2000 Large Districts")
+                // hed.html("Test Scores for 8th Grade in 2000 Large Districts")
                 // hed.html("Test Scores for <span class='highlight'>8th Grade</span> in 2000 Large Districts")
 
             } else {
                 sel_var_state = "mnav3poolgcs"
                 // button.html("Switch 8th grade")
-                hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
+                // hed.html("Test Scores for <span class='highlight'>3rd Grade</span> in 2000 Large Districts")
             }
 
             // var t = d3.transition() //https://github.com/d3/d3-transition
@@ -403,50 +403,50 @@
         }
 
 
-        points.on("mouseover", (event, d) => {
+        // points.on("mouseover", (event, d) => {
 
-            points
-                .style("stroke", "#333333")
-                .style("stroke-width", .5)
-                .style("fill", "#c0cad8")
-                .style("fill-opacity", .5)
+        //     points
+        //         .style("stroke", "#333333")
+        //         .style("stroke-width", .5)
+        //         .style("fill", "#c0cad8")
+        //         .style("fill-opacity", .5)
 
-            svg.select(".p-" + d.leaidC)
-                .style("stroke", "black")
-                .style("stroke-width", 2)
-                .style("fill", "yellow")
-                .style("fill-opacity", 1)
-                .raise()
+        //     svg.select(".p-" + d.leaidC)
+        //         .style("stroke", "black")
+        //         .style("stroke-width", 2)
+        //         .style("fill", "yellow")
+        //         .style("fill-opacity", 1)
+        //         .raise()
 
-            let reScaleLang = d3.scaleThreshold()
-                .domain([0]) //make sure to put this in brackets!
-                .range(["below", "above"])
+        //     let reScaleLang = d3.scaleThreshold()
+        //         .domain([0]) //make sure to put this in brackets!
+        //         .range(["below", "above"])
 
-            let diff = +d.mnav3poolgcs - 3
+        //     let diff = +d.mnav3poolgcs - 3
 
-            let lang = "In " + d.newname + ", " + d.nyt_abbrev + " the typical 3rd grade student scored "
-            lang += d3.format(".1f")(Math.abs(diff)) + " years " + reScaleLang(diff) + " his or her grade level."
+        //     let lang = "In " + d.newname + ", " + d.nyt_abbrev + " the typical 3rd grade student scored "
+        //     lang += d3.format(".1f")(Math.abs(diff)) + " years " + reScaleLang(diff) + " his or her grade level."
 
-            popup
-                .style("opacity", 1)
-                .style("left", (event.x - 100) + "px")
-                .style("top", (event.y - 150) + "px")
-                .html(lang)
+        //     // popup
+        //     //     .style("opacity", 1)
+        //     //     .style("left", (event.x - 100) + "px")
+        //     //     .style("top", (event.y - 150) + "px")
+        //     //     .html(lang)
 
-        })
+        // })
 
 
-        points.on("mouseout", (event, d) => {
-            // console.log(event)
-            points
-                .style("stroke", "#333333")
-                .style("stroke-width", .5)
-                .style("fill", "#c0cad8")
+        // points.on("mouseout", (event, d) => {
+        //     // console.log(event)
+        //     points
+        //         .style("stroke", "#333333")
+        //         .style("stroke-width", .5)
+        //         .style("fill", "#c0cad8")
 
-            popup
-                .style("opacity", 0)
+        //     popup
+        //         .style("opacity", 0)
 
-        })
+        // })
 
 
     }) //end function
